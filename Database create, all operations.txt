@@ -1,0 +1,59 @@
+CREATE DATABASE collegeinfo;
+
+CREATE TABLE Studentinfo(
+	Roll int(3),
+	Name varchar(20),
+	Age int(3),
+	CGPA double(3,2)
+);
+
+INSER INTO studentinfo(Roll,Name,Age,CGPA) VALUES(101,'Rahim',21,3.75);
+INSERT INTO Studentinfo Values(102,'Karim',22,3.81);
+INSERT INTO Studentinfo VALUES
+(103, 'Tanzim', 21, 3.82),
+(104, 'Rahkim', 22, 3.86);
+
+SELECT Name,CGPA from StudentInfo;
+SELECT * from StudentInfo;
+
+SELECT * FROM studentinformation 
+LIMIT 2;
+
+ALTER TABLE studentinformation
+ADD Email varchar(255);
+
+ALTER TABLE studentinformation
+ADD City varchar(30);
+
+ALTER TABLE studentinformation
+ADD dept varchar(100);
+
+ALTER TABLE studentinformation
+CHANGE dept Department varchar(80);
+
+ALTER TABLE studentinformation
+DROP COLUMN Email;
+
+INSERT INTO studentinformation(City,Department)
+VALUES('Sylhet', 'CSE');
+
+UPDATE studentinformation 
+set City = 'Sylhet'
+WHERE Roll=101;
+
+UPDATE studentinformation
+set City = 'Chandpur'
+WHERE Roll = 101;
+
+UPDATE studentinformation
+set City = 'Dhaka'
+WHERE Roll = 104;
+
+#  *******deleting a whole row********
+DELETE from studentinformation
+WHERE Department='CSE';
+
+
+
+
+
