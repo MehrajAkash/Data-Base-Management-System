@@ -263,6 +263,7 @@ UNION
 To query a list of unique CITY names that start with a vowel (A, E, I, O, U) from the STATION table in MySQL, use the following query:
 
 solution: 
+
 SELECT DISTINCT CITY
 FROM STATION
 WHERE CITY REGEXP '^[aeiouAEIOU]';
@@ -289,8 +290,76 @@ a$			Strings ending with a
 ^[A-Z]{3}[0-9]{4}	3 uppercase letters followed			by 4 digits
 
 
+Question:
+
+Query the list of CITY names ending with vowels (a, e, i, o, u) from STATION. Your result cannot contain duplicates.
+
+Solution:
+
+select distinct CITY
+from STATION 
+where CITY REGEXP '[aeiou]$';
 
 
+Question:
+Query the list of CITY names from STATION which have vowels (i.e., a, e, i, o, and u) as both their first and last characters. Your result cannot contain duplicates.
 
+Solution:
+
+select distinct CITY
+from STATION 
+where CITY REGEXP '^[aeiou].*[aeiou]$'
+
+another solution:
+
+select distinct CITY
+from STATION 
+where lower(LEFT(CITY,1) IN ('a','e','i','o','u'))
+and RIGHT(CITY,1) IN ('a','e','i','o','u');
+
+'.*' = Any number of characters in between.
+[aeiouAEIOU]$ — Last character must also be a vowel.
+
+
+Question:
+Query the list of CITY names from STATION that do not start with vowels. Your result cannot contain duplicates.
+
+Solution:
+
+select distinct city
+from STATION 
+where lower(left(CITY,1)) NOT IN ('a','e','i','o','u');
+
+Another Solution:
+
+select distinct city
+from STATION 
+where CITY NOT REGEXP '^[aeiou]';
+
+
+Question:
+Query the list of CITY names from STATION that do not end with vowels. Your result cannot contain duplicates.
+
+Solution:
+
+select distinct CITY from STATION
+where CITY NOT REGEXP '[aeiou]$';
+
+Another Solution:
+
+select distinct CITY from STATION
+where right(CITY,1) NOT IN ('a','e','i','o','u');
+
+
+Question: 
+city Donot start or donot end with vowel.
+Solution:
+
+select distinct CITY from STATION
+where CITY NOT REGEXP '^[aeiou].*[aeiou]$';
+
+select distinct CITY from STATION
+where left(CITY,1) NOT IN ('a','e','i','o','u')
+or right(CITY,1) NOT IN ('a','e','i','o','u');
 
 
