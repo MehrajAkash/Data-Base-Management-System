@@ -161,7 +161,7 @@ DROP TABLE student_identity;
 DROP DATABASE collegeinfo2;
 
 ****** Constraint, Auto_Increment **********
-
+s
 CREATE TABLE teacher(
     ID int NOT NULL AUTO_INCREMENT,
     Name varchar(15) NOT NULL,
@@ -194,6 +194,39 @@ SELECT CONCAT('Welcome to ', 'mySql database');
 
 SELECT CONCAT('I am ', Name, ID, ' Id No') AS tutor
 FROM teacher;
+
+********* Greatest, least, truncate, rand(), log ****
+
+SELECT LEAST(-5,3,-15,18); = -15
+SELECT GREATEST(-5,3,-15,18); = 18
+
+SELECT POW(2,3); = 8
+SELECT LOG(2);
+SELECT LOG10(2);
+
+SELECT TRUNCATE( 10.25858, 2 );
+SELECT TRUNCATE( LOG(2), 2 );
+
+SELECT rand();
+
+*********** Aggregate functions ***********
+
+DESCRIBE teacher;
+
+SELECT MAX(Salary)
+FROM teacher;
+
+SELECT MIN(Salary)
+FROM teacher;
+
+SELECT SUM(Salary), AVG(Salary)
+FROM teacher;
+
+SELECT COUNT(*), MAX(Salary),Min(Salary), SUM(Salary), AVG(Salary) FROM teacher;
+
+SELECT Name, MIN(Salary)
+FROM teacher;
+
 
 
 
