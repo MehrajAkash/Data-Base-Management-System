@@ -1,5 +1,7 @@
 CREATE DATABASE collegeinfo;
 
+SHOW DATABASES;
+
 CREATE TABLE Studentinfo(
 	Roll int(3),
 	Name varchar(20),
@@ -120,7 +122,79 @@ WHERE (City='Sylhet')
 AND
 (Age=21 OR CGPA>3.80)
 
+
 ********* IN, NOT IN *************
+
+SELECT *
+FROM student_info
+WHERE City IN('sylhet','chandpur');
+
+SELECT *
+FROM student_info
+WHERE City NOT IN('sylhet','chandpur');
+
+*********** LIKE operator ***********
+
+SELECT * FROM `student_info`
+WHERE Name LIKE '%m';
+
+SELECT * FROM `student_info`
+WHERE City LIKE 's%';
+
+SELECT * FROM `student_info`
+WHERE City LIKE 's%';
+
+SELECT * FROM `student_info`
+WHERE City LIKE '__l%';
+
+SELECT * FROM student_info
+WHERE City LIKE '%e_';
+
+*********** AS *************
+SELECT Roll AS ID, Name AS 'First Name'
+FROM student_info;
+
+******* DROP a table ************
+DROP TABLE student_identity;
+
+******* DROP a database **********
+DROP DATABASE collegeinfo2;
+
+****** Constraint, Auto_Increment **********
+
+CREATE TABLE teacher(
+    ID int NOT NULL AUTO_INCREMENT,
+    Name varchar(15) NOT NULL,
+    Salary double(10,2),
+    PRIMARY KEY(ID)
+);    
+
+INSERT INTO teacher(ID, Name, Salary)
+VALUES(1000,'Sajib',35000);
+
+INSERT INTO teacher(Name,Salary)
+VALUES('Sujon', 25000),
+('Rayhan',31000), ('Siraj',12000);
+
+UPDATE teacher
+set Salary = 19000
+WHERE ID = 1003;
+
+SELECT UPPER('i am man');
+SELECT lower('HELLO, I am From BanglaDEsh');
+
+SELECT UPPER(Name)
+FROM teacher;
+
+SELECT UPPER(Name) AS FIRST_NAME
+FROM teacher;
+
+********* CONCAT *************
+SELECT CONCAT('Welcome to ', 'mySql database');
+
+SELECT CONCAT('I am ', Name, ID, ' Id No') AS tutor
+FROM teacher;
+
 
 
 
