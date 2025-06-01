@@ -14,8 +14,10 @@ INSERT INTO Studentinfo VALUES
 (104, 'Rahkim', 22, 3.86);
 
 SELECT Name,CGPA from StudentInfo;
+
 SELECT * from StudentInfo;
 
+***** Shows first 2 row ******
 SELECT * FROM studentinformation 
 LIMIT 2;
 
@@ -24,6 +26,9 @@ ADD Email varchar(255);
 
 ALTER TABLE studentinformation
 ADD City varchar(30);
+
+
+******* ALTER keyword ********
 
 ALTER TABLE studentinformation
 ADD dept varchar(100);
@@ -34,12 +39,18 @@ CHANGE dept Department varchar(80);
 ALTER TABLE studentinformation
 DROP COLUMN Email;
 
+*******************************
+
 INSERT INTO studentinformation(City,Department)
 VALUES('Sylhet', 'CSE');
+
+*********UPDATE**********
 
 UPDATE studentinformation 
 set City = 'Sylhet'
 WHERE Roll=101;
+
+*************************
 
 UPDATE studentinformation
 set City = 'Chandpur'
@@ -50,8 +61,71 @@ set City = 'Dhaka'
 WHERE Roll = 104;
 
 #  *******deleting a whole row********
+
 DELETE from studentinformation
-WHERE Department='CSE';
+WHERE Roll=103;
+
+**************************************
+
+RENAME TABLE studentinformation to student_info;
+
+DROP TABLE teacher;
+
+***** show distinct column name *******
+SELECT DISTINCT City
+FROM student_info;
+
+*******Sorting column value **********
+
+SELECT Name,Age
+FROM student_info
+ORDER BY Name;
+
+SELECT Name,CGPA,City
+FROM student_info
+ORDER BY CGPA DESC;
+
+****** Arithmetic Operator **********
+
+SELECT 9%2;
+SELECT 5+2;
+SELECT 5/2;
+
+********WHERE************
+SELECT Name,City 
+FROM student_info
+WHERE City='Chandpur';
+
+SELECT Roll,CGPA,Age
+FROM student_info
+WHERE CGPA > 3.75
+ORDER BY Age;
+
+*********BETWEEN************
+SELECT Roll,Name,CGPA
+FROM student_info
+WHERE Roll BETWEEN 102 and 104;
+
+SELECT Roll,Name,CGPA
+FROM student_info
+WHERE Roll != 102;
+
+********* AND, OR **********
+
+SELECT * FROM student_info
+WHERE City='Chandpur' OR CGPA >3.80;
+
+SELECT * FROM student_info
+WHERE (City='Sylhet')
+AND
+(Age=21 OR CGPA>3.80)
+
+********* IN, NOT IN *************
+
+
+
+
+
 
 
 
