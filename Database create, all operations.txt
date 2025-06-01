@@ -227,10 +227,66 @@ SELECT COUNT(*), MAX(Salary),Min(Salary), SUM(Salary), AVG(Salary) FROM teacher;
 SELECT Name, MIN(Salary)
 FROM teacher;
 
+***** DISTINCT **********
+
+SELECT distinct CITY from STATION 
+where ID % 2=0;
+
+**** finding number of difference using count******
+
+SELECT count(CITY) - count(DISTINCT CITY) from STATION;
+
+SELECT COUNT(CITY) - COUNT(DISTINCT CITY) AS DIFFERENCE
+FROM STATION;
+
+**** Characters length diff. between two data *****
+Question:
+Query the two cities in STATION with the shortest and longest CITY names, as well as their respective lengths (i.e.: number of characters in the name). If there is more than one smallest or largest city, choose the one that comes first when ordered alphabetically.
+The STATION table is described as follows:
+
+Solution: 
+(
+  SELECT CITY, CHAR_LENGTH(CITY)
+  FROM STATION
+  ORDER BY CHAR_LENGTH(CITY) ASC, CITY ASC
+  LIMIT 1
+)
+UNION
+(
+  SELECT CITY, CHAR_LENGTH(CITY)
+  FROM STATION
+  ORDER BY CHAR_LENGTH(CITY) DESC, CITY ASC
+  LIMIT 1
+);
+
+************* question ***********
+To query a list of unique CITY names that start with a vowel (A, E, I, O, U) from the STATION table in MySQL, use the following query:
+
+solution: 
+SELECT DISTINCT CITY
+FROM STATION
+WHERE CITY REGEXP '^[aeiouAEIOU]';
+
+✅ Explanation:
+DISTINCT ensures no duplicate CITY names are returned.
+
+REGEXP '^[aeiouAEIOU]' matches city names that start with a vowel (case-insensitive).
+
+^ anchors the match to the start of the string.
+
+[aeiouAEIOU] matches any of the vowels.
 
 
+**************REGEXP ******************
+Common REGEXP Examples in MySQL:
 
+Pattern			Matches
 
+^a			Strings starting with a
+a$			Strings ending with a
+^[aeiou]		Starting with a vowel
+[0-9]			Any digit
+^[A-Z]{3}[0-9]{4}	3 uppercase letters followed			by 4 digits
 
 
 
